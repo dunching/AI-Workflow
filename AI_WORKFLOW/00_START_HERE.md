@@ -167,3 +167,13 @@ When a task is completed or needs handoff:
 - Update current todo/status files if task status changed.
 - Update task summary if the result is worth preserving.
 - Update project contracts/known issues/technical debt if the change affects them.
+
+## Product Decision Gate (precedes execution convergence)
+
+Before the Post-Read Convergence Gate for L2/L3 tasks, read the project's actual product vision/milestone if available and apply `08_ProductAlignment.md`. For uncertain architecture, apply `09_TechDiscovery.md` and `10_ArchitectureChallenge.md`; use `11_CircuitBreaker.md` for repeated failed changes. These are assessment duties, not permission to expand the code modification scope. The existing explicit-change-confirmation and source-confirmation gates remain in force.
+
+Project state entry is project-configurable (usually specified in the parent project's root `AGENTS.md` or `Docs/README.md`). `Docs/AI_STATE/00_PROJECT_ENTRY.md` is only a template default; never treat its absence as an error if the parent explicitly uses `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` or another path. If used as a submodule, resolve all paths relative to the parent project root as directed by its entrypoint.
+
+Level L1: known, local, reversible changes use lightweight review; L2: cross-system changes review product value and alternatives; L3: expensive/uncertain architectural changes require a separate time-boxed spike and user-selected design. Never make a code-line-count threshold the trigger. Approval for a concrete change in the parent project is still required.
+
+Use concise user-facing replies for routine questions; fixed response metadata must not bury the requested result or turn every task into a report. Preserve provenance and unverified status.

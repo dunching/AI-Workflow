@@ -13,7 +13,9 @@ Reusable AI / Agent workflow templates shared across projects.
 
 Do not put project state in this repository.
 
-Project-specific state belongs in each project's own `Docs/AI_STATE/` directory, including handoff, todo, API contracts, code overview, design docs, known issues, technical debt, archives, images, and generated status files.
+Project-specific state belongs in each project's own `Docs/PROJECT_STATE/` directory, including handoff, todo, API contracts, code overview, design docs, known issues, technical debt, archives, images, and generated status files.
 
-The sync script intentionally refuses to write into `Docs/AI_STATE/`.
+The sync script intentionally refuses to write into `Docs/PROJECT_STATE/`.
 
+
+For Git-submodule consumers, use parent-root `AGENTS.md` → `Docs/PROJECT_POLICY/` → this repository's `AI_ENTRY/` and `AI_WORKFLOW/` → parent `Docs/PROJECT_STATE/`. No product-specific rules belong here.

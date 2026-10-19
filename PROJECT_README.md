@@ -1,10 +1,12 @@
+> LEGACY COPY TEMPLATE ONLY. In submodule projects use root AGENTS.md and Docs/AI-Workflow/AI_ENTRY/, Docs/AI-Workflow/AI_WORKFLOW/, Docs/PROJECT_POLICY/, Docs/PROJECT_STATE/. Do not overwrite existing project README.
+
 # AI / Agent Session Bootstrap
 
 This file is the shortest repository entry point for AI / Agent sessions.
 
 ## Quick Entries
 
-Use `Docs/AI_ENTRY/` when you want to give AI a short state-specific entry prompt:
+Use `Docs/AI-Workflow/AI_ENTRY/` when you want to give AI a short state-specific entry prompt:
 
 - New session: `读 新会话文档`
 - After compression: `读 压缩恢复文档`
@@ -25,24 +27,24 @@ Use this prompt when starting a new session:
 
 For any task that touches project code, documentation, design, tasks, or repository state:
 
-1. For a new session or uncertain state, read every Markdown file in `Docs/AI_WORKFLOW/`, sorted by filename.
-2. Follow `Docs/AI_WORKFLOW/00_START_HERE.md` as the authoritative workflow entry.
-3. Read `Docs/AI_STATE/00_PROJECT_ENTRY.md` as the authoritative full project-state entry.
-4. For same-thread compression resume only, use `Docs/AI_ENTRY/01_压缩恢复.md` as the light entry, then escalate to the full entry when its rules require it.
+1. For a new session or uncertain state, read every Markdown file in `Docs/AI-Workflow/AI_WORKFLOW/`, sorted by filename.
+2. Follow `Docs/AI-Workflow/AI_WORKFLOW/00_START_HERE.md` as the authoritative workflow entry.
+3. Read `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` as the authoritative full project-state entry.
+4. For same-thread compression resume only, use `Docs/AI-Workflow/AI_ENTRY/01_压缩恢复.md` as the light entry, then escalate to the full entry when its rules require it.
 
 ## File Roles
 
 - `Docs/README.md`: bootstrap only; it points to workflow and project-state entries.
-- `Docs/AI_ENTRY/`: short user-facing AI entry prompts for session state; it stores no project facts.
-- `Docs/AI_WORKFLOW/`: reusable workflow policy. Do not store project facts here.
-- `Docs/AI_STATE/`: project-specific mutable state, facts, handoff, todo, summaries, contracts, known issues, technical debt, and archives.
+- `Docs/AI-Workflow/AI_ENTRY/`: short user-facing AI entry prompts for session state; it stores no project facts.
+- `Docs/AI-Workflow/AI_WORKFLOW/`: reusable workflow policy. Do not store project facts here.
+- `Docs/PROJECT_STATE/`: project-specific mutable state, facts, handoff, todo, summaries, contracts, known issues, technical debt, and archives.
 
 ## Reading Notes
 
 - Treat repository Markdown and source text as UTF-8 unless the project says otherwise.
 - On Windows PowerShell, read non-ASCII text with `Get-Content -Encoding UTF8`.
-- If `Docs/AI_STATE/00_PROJECT_ENTRY.md` is missing, report that the project state entry is missing before proceeding.
+- If `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` is missing, report that the project state entry is missing before proceeding.
 
 ## Before Changing Project Files
 
-Do not treat this bootstrap file as enough context. Before changing code, documentation, configuration, assets, or project state, use the confirmation gate defined in `Docs/AI_WORKFLOW/00_START_HERE.md` and the source-confirmation workflow in `Docs/AI_WORKFLOW/03_DocsCodeAnalysis.md`.
+Do not treat this bootstrap file as enough context. Before changing code, documentation, configuration, assets, or project state, use the confirmation gate defined in `Docs/AI-Workflow/AI_WORKFLOW/00_START_HERE.md` and the source-confirmation workflow in `Docs/AI-Workflow/AI_WORKFLOW/03_DocsCodeAnalysis.md`.

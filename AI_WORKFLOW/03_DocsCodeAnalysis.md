@@ -20,10 +20,10 @@ Typical user prompts:
 
 ## Required Entry
 
-Start from the repository entry rules in `Docs/AI_WORKFLOW/00_START_HERE.md`.
+Start from the repository entry rules in `Docs/AI-Workflow/AI_WORKFLOW/00_START_HERE.md`.
 
-- For a new session or uncertain state, use the full entry path in `Docs/AI_STATE/00_PROJECT_ENTRY.md`.
-- For same-thread compression resume, use `Docs/AI_ENTRY/01_压缩恢复.md` and escalate to the full entry when that file requires it.
+- For a new session or uncertain state, use the full entry path in `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md`.
+- For same-thread compression resume, use `Docs/AI-Workflow/AI_ENTRY/01_压缩恢复.md` and escalate to the full entry when that file requires it.
 
 Do not use old handoff text, historical task logs, or memory as the primary fact source when current state files exist.
 

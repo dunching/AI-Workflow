@@ -1,18 +1,18 @@
 # 00_START_HERE - Universal AI / Agent Workflow Entry
 
-This directory contains reusable AI / Agent workflow rules. It is intended to be copied between projects.
+This directory contains reusable rules. In consumer projects this repository is a version-pinned Git submodule; the project root AGENTS.md resolves all locations.
 
 ## Mandatory Startup
 
 For any new AI / Agent session that touches project code, documentation, design, tasks, or repository state:
 
-1. Read every Markdown file in this directory, sorted by filename.
+1. Read the project root AGENTS.md and PROJECT_POLICY first, followed by the relevant shared workflow files. Full policy reading is required for L3 or uncertain sessions; L1/L2 can follow the concise entry and relevant skills.
 2. Treat this directory as workflow policy, not project state.
 3. After reading all workflow rules, read the project-specific state entry file:
-   - Default path: `Docs/AI_STATE/00_PROJECT_ENTRY.md`
+   - Project-defined path from root AGENTS.md (often `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md`)
    - If that file does not exist, read the repository README and clearly report the missing state entry.
 
-General short entry prompts live in `Docs/AI_ENTRY/`. For same-thread compression resume, do not automatically repeat the full startup read. Read `Docs/AI_ENTRY/01_压缩恢复.md` first, then follow its light resume read order. Escalate to the full startup path above when the resume entry requires it, when state is uncertain, or when the user explicitly asks for the full entry rules.
+General short entry prompts live in `Docs/AI-Workflow/AI_ENTRY/`. For same-thread compression resume, do not automatically repeat the full startup read. Read `Docs/AI-Workflow/AI_ENTRY/01_压缩恢复.md` first, then follow its light resume read order. Escalate to the full startup path above when the resume entry requires it, when state is uncertain, or when the user explicitly asks for the full entry rules.
 
 ## Text Encoding Rule
 
@@ -22,7 +22,7 @@ General short entry prompts live in `Docs/AI_ENTRY/`. For same-thread compressio
 
 ## Read-Only Rule
 
-- Files in `Docs/AI_WORKFLOW/` are read-only for normal AI / Agent work.
+- Files in `Docs/AI-Workflow/AI_WORKFLOW/` are read-only for normal AI / Agent work.
 - Do not modify, rewrite, reformat, rename, or move these files unless the user explicitly asks to change the AI workflow itself.
 - When normal implementation work discovers a process problem, record it in the project state area or mention it to the user; do not silently edit the workflow rules.
 
@@ -33,12 +33,12 @@ Project-specific and changeable AI/Agent working files belong outside this direc
 Recommended default:
 
 ```text
-Docs/AI_STATE/
+Docs/PROJECT_STATE/
 ```
 
 That area may contain handoff, current todo, task summary, decisions, known issues, API contracts, project status, and other mutable collaboration records.
 
-Short AI entry prompts belong in `Docs/AI_ENTRY/`, not in project state. They select how to resume or proceed; they do not store project facts, handoff, todo, or implementation status.
+Short AI entry prompts belong in `Docs/AI-Workflow/AI_ENTRY/`, not in project state. They select how to resume or proceed; they do not store project facts, handoff, todo, or implementation status.
 
 ## Post-Read Convergence Gate
 
@@ -120,7 +120,7 @@ Default project replies should keep typography calm and readable in the Codex ch
 - Under each fixed bullet label, use nested bullets for the actual facts. Keep nested content concise.
 - Omit a fixed bullet only when it is clearly unrelated to the user's request; for project code/document/config/state changes, include all confirmation-gate bullets.
 - For very small replies, keep each fixed bullet to one short nested bullet rather than expanding into prose, but preserve the two-part shape.
-- For compression resume, prefer the compact fixed labels from `Docs/AI_ENTRY/01_压缩恢复.md` over a full confirmation-gate expansion when no edit is being proposed.
+- For compression resume, prefer the compact fixed labels from `Docs/AI-Workflow/AI_ENTRY/01_压缩恢复.md` over a full confirmation-gate expansion when no edit is being proposed.
 - Put the user's requested answer in `2. 实际回复`; do not bury the actual answer inside the fixed response content.
 - Avoid large headings, bold labels, full-block code fences, and tables unless they genuinely improve readability.
 - Use inline code style only for paths, commands, class names, function names, tags, log keys, and other exact symbols that need precision.
@@ -172,7 +172,7 @@ When a task is completed or needs handoff:
 
 Before the Post-Read Convergence Gate for L2/L3 tasks, read the project's actual product vision/milestone if available and apply `08_ProductAlignment.md`. For uncertain architecture, apply `09_TechDiscovery.md` and `10_ArchitectureChallenge.md`; use `11_CircuitBreaker.md` for repeated failed changes. These are assessment duties, not permission to expand the code modification scope. The existing explicit-change-confirmation and source-confirmation gates remain in force.
 
-Project state entry is project-configurable (usually specified in the parent project's root `AGENTS.md` or `Docs/README.md`). `Docs/AI_STATE/00_PROJECT_ENTRY.md` is only a template default; never treat its absence as an error if the parent explicitly uses `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` or another path. If used as a submodule, resolve all paths relative to the parent project root as directed by its entrypoint.
+Project state entry is project-configurable (usually specified in the parent project's root `AGENTS.md` or `Docs/README.md`). `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` is only a template default; never treat its absence as an error if the parent explicitly uses `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` or another path. If used as a submodule, resolve all paths relative to the parent project root as directed by its entrypoint.
 
 Level L1: known, local, reversible changes use lightweight review; L2: cross-system changes review product value and alternatives; L3: expensive/uncertain architectural changes require a separate time-boxed spike and user-selected design. Never make a code-line-count threshold the trigger. Approval for a concrete change in the parent project is still required.
 

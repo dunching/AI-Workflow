@@ -11,6 +11,16 @@ These rules are project-agnostic. Project-specific contracts belong in the proje
 - If information is missing, state assumptions and risks clearly.
 - Protect user or teammate changes: never revert unrelated edits you did not make.
 
+## UE 开发批次与协作效率
+
+- 以一个可独立验证的行为或事务边界划分修改批次。单批保持单一目的，同时覆盖该接口必需的生产调用方、适配层和测试夹具；不要把“改动小”理解为每改一处就运行完整构建，也不要为减少构建次数合并无关功能。
+- 跨模块或状态协议调整前，沿实际调用链核对初始化、能力安装、运行时更新、出生与离场、序列化、恢复及最终消费入口。列出受影响的类型、版本、工厂和调用方，集中完成已授权范围内的必要迁移；测试夹具与生产代码使用同一份接口契约。
+- 调整执行顺序、状态生效时序或并行模型时，先用可验证的串行路径明确读取版本、独占写集合、提交点和失败重试语义，再以相同计算路径验证并行实现。比较完整结果与生命周期行为，避免同时更换算法和调度方式导致差异无法归因；已有等价参考时直接复用。
+- 同一组共享文件明确唯一写入方。构建或运行验证期间，冻结项目规定范围内的源码、工具和输入；变更后重新确认构建与测试身份。等待期间可进行不改变验证输入的只读分析，协作隔离方式遵循项目和用户授权。
+- 审查聚焦本批实际差异、接口边界和未验证风险。已有且仍适用的检查结论应保留并复用，出现新修改、新失败或身份变化时再补查；避免无依据地重读全部上下文、重复交接或重复审查。
+- 进度汇报说明实际完成的行为、当前阻断、下一轮验证要证明什么。交接和状态文档在里程碑或关键决策变化时同步，失败根因与范围变化及时记录；不要把计划、静态审查或构建启动写成实现或运行通过。
+- 构建和验证批次按 [04_ImplementedFlowVerification.md](04_ImplementedFlowVerification.md) 选择；同一根因反复失败时，按 [11_CircuitBreaker.md](11_CircuitBreaker.md) 收敛假设并调整验证方式。
+
 ## Editing Rules
 
 - Follow existing project style, architecture, naming, formatting, and local helper APIs.

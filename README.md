@@ -12,6 +12,7 @@ UE 独立测试优先 LLT，不默认建立裸 main()、手工断言和编译脚
 - skills/project-ai-workflow/SKILL.md：保留兼容的开发工作流入口。
 - skills/wf-start、wf-resume、wf-status、wf-check：四个轻量会话入口，规则仍引用 AI_ENTRY 与 AI_WORKFLOW。
 - AI_WORKFLOW 与 AI_ENTRY：随包规则和会话入口，只有一份正文。
+- profiles/unreal：随包 UE 编码规范与原始 .clang-format；按 [UE 规则路由](profiles/unreal/README.md)加载，项目明确覆盖优先。
 
 在 Codex“添加插件市场”中填写：
 
@@ -42,6 +43,7 @@ codex plugin marketplace add https://github.com/dunching/AI-Workflow.git --ref m
 
 自然语言仅在真实意图匹配时用于隐式选择，引用、讨论或修改这些短语不触发执行；不保证宿主每次自动命中，也不注册自定义斜杠命令或 GUI 新会话事件。
 新会话完整读取插件 AI_WORKFLOW 当前规则后读项目当前政策与状态；压缩恢复按摘要、最新意图、强制约束和相关变化轻量核对，不重读全部历史。
+确认 UE 后，新会话加载 UE 规范和实际生效配置；压缩恢复继承已知配置、按变化补读。非 UE 不加载，不全文读取全部 profiles；安装插件不会自动复制配置或配置编辑器，格式化时须显式指定实际配置路径。
 所有项目相关回复持续采用“项目状态”一句话及“1. 固定回复内容 / 2. 实际回复”，具体规则只维护在[工作流入口](AI_WORKFLOW/00_工作流入口.md)。
 
 技能从自身文件位置解析随包入口；项目 Git 和状态读取始终发生在当前项目。

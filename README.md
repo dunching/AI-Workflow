@@ -1,21 +1,44 @@
-# AI Workflow Templates
+# 项目开发工作流
 
-Reusable AI / Agent workflow templates shared across projects.
+这套中文 AI 工作流同时作为项目文档子模块和技能插件使用。目标是先厘清方案，连续完成完整功能主体与生产接入，再集中验证、归并修复和验收。
 
-## Contents
+## 插件组成
 
-- `PROJECT_README.md`: template for a project's `Docs/README.md` bootstrap entry.
-- `AI_ENTRY/`: short user-facing AI session entry prompts.
-- `AI_WORKFLOW/`: reusable workflow policy files.
-- `Scripts/Sync-AIWorkflowToProject.ps1`: PowerShell sync helper for copying template files into a project.
+- plugin.json：Agent Plugins 1.0 插件清单，插件标识为 ai-workflow。
+- skills/project-ai-workflow/SKILL.md：按任务类型读取规则的轻量技能入口。
+- AI_WORKFLOW：唯一维护的中文规则正文，共十二份。
+- AI_ENTRY：新会话、压缩恢复、状态恢复及修改前确认入口。
 
-## Project-Specific State Boundary
+这是只包含技能和参考文件的插件，不需要服务器、账号密钥或 MCP 工具。
+技能从插件内部引用规则，安装包不依赖本机盘符、目录联接或另外一份个人技能。
 
-Do not put project state in this repository.
+## 使用
 
-Project-specific state belongs in each project's own `Docs/PROJECT_STATE/` directory, including handoff, todo, API contracts, code overview, design docs, known issues, technical debt, archives, images, and generated status files.
+通过支持的插件宿主加载“项目开发工作流”，并在任务中选择该插件或调用 $project-ai-workflow。
+加载后的具体插件入口以宿主实际界面为准；不需要运行历史同步脚本。
 
-The sync script intentionally refuses to write into `Docs/PROJECT_STATE/`.
+技能先读取当前项目根 AGENTS.md 和必要状态，按需使用相关流程。项目自己的目标、引擎、政策和用户当前授权始终保留。
+插件不自动提交、推送、创建工作树或扩展任务范围，也不强制每个局部先写测试再实现。
 
+## 核心规则
 
-For Git-submodule consumers, use parent-root `AGENTS.md` → `Docs/PROJECT_POLICY/` → this repository's `AI_ENTRY/` and `AI_WORKFLOW/` → parent `Docs/PROJECT_STATE/`. No product-specific rules belong here.
+- 先给完整实现方案，明确调用链、所有权、接口与版本、文件范围、功能批次和验收条件。
+- 按完整功能边界持续实施，生产实现、调用方、编码恢复、真实消费者与必要夹具一并迁移。
+- 实现期间保留基础检查，主体接通后集中运行相关回归；同因失败归并修复。
+- UE 独立测试优先使用 LLT，不默认新增裸 main()、手工断言及独立编译脚本。
+- 超预算、反复验证或主体推进停滞时复盘；按功能交付汇报，分别说明实现、正确性和性能。
+- 当前状态保持简明，压缩恢复只补必要上下文，历史证据保留。
+
+## 规则入口
+
+从 [工作流入口](AI_WORKFLOW/00_工作流入口.md) 开始，根据任务读取相关规则。
+本仓库不存放具体项目的当前待办、机器路径、地图或玩法结论。
+
+项目以 Git 子模块使用时，根 AGENTS.md 和 Docs/README.md 负责引导到本目录；项目事实仍在项目自己的状态区。
+PROJECT_README.md 与 Scripts/Sync-AIWorkflowToProject.ps1 为旧复制方式兼容入口，不作为插件安装命令，不默认执行。
+
+## 更新
+
+规则修改直接维护 AI_WORKFLOW，技能只保留路由与关键边界。
+发布插件时重新打包这些实际文件并检查引用、清单和技能诊断；安装的插件是该发布版本的快照，不会自动追踪仓库未提交或后续变更。
+本地 Git 修改、推送到远端和创建插件发布分别报告，不互相冒充完成。

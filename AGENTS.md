@@ -1,7 +1,11 @@
-# AI-Workflow agent entry
+# AI 工作流代理入口
 
-Universal workflow lives in `AI_WORKFLOW/` and session prompts in `AI_ENTRY/`. For a project using this repository as a Git submodule, prefer that project's **root AGENTS.md** and project state entry for all project-specific paths.
+共享方法位于 AI_WORKFLOW，轻量会话入口位于 AI_ENTRY。项目路径、政策、状态和权限以使用本子模块的项目根 AGENTS.md 及其实际入口为准。
 
-Before major work, follow: 08 Product Alignment -> 09 Tech Discovery (if warranted) -> 10 Architecture Challenge -> existing source confirmation / explicit change approval -> implementation / validation. Use 11 Circuit Breaker for recurring failures.
+先读[工作流入口](AI_WORKFLOW/00_工作流入口.md)，按任务需要读取[开发修改与维护规范](AI_WORKFLOW/01_开发修改与维护规范.md)及相关流程；不默认全量加载所有文档。
 
-Do not replace project-specific product vision, architectural contracts or runtime evidence with this shared policy. Never mutate a parent's files without that project's explicit scope approval.
+默认采用方案先行、完整主体实现、集中验证修复。已有明确授权持续有效；技能模板不能把用户选定方式改回逐条测试驱动或反复审批。UE 独立测试优先使用 LLT。
+
+重要或不确定任务按需执行产品对齐、技术调研和架构审查；反复返工按[推进复盘](AI_WORKFLOW/11_返工熔断与推进复盘.md)收敛。
+
+共享工作流不替代项目业务、架构合同或运行事实，不自动授权修改其他项目、发布、提交或推送。仅用户明确要求调整工作流时修改本仓库规则。

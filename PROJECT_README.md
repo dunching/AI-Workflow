@@ -1,50 +1,27 @@
-> LEGACY COPY TEMPLATE ONLY. In submodule projects use root AGENTS.md and Docs/AI-Workflow/AI_ENTRY/, Docs/AI-Workflow/AI_WORKFLOW/, Docs/PROJECT_POLICY/, Docs/PROJECT_STATE/. Do not overwrite existing project README.
+# 项目文档入口模板
 
-# AI / Agent Session Bootstrap
+本文件只用于缺少入口的新项目。已经采用 Git 子模块的项目不应以本模板覆盖现有 Docs/README.md。
 
-This file is the shortest repository entry point for AI / Agent sessions.
+## 当前入口
 
-## Quick Entries
+1. 读取项目根 AGENTS.md 和项目政策。
+2. 读取 Docs/AI-Workflow/AI_WORKFLOW/00_工作流入口.md，按当前任务类型选择流程。
+3. 按项目根入口定位当前状态，默认使用 Docs/PROJECT_STATE，不将此模板当作运行事实。
+4. 同线程压缩恢复使用 Docs/AI-Workflow/AI_ENTRY/01_压缩恢复.md，不默认全文重读全部工作流。
+5. 变更前确认真实源码或文档入口、范围和影响；已有明确授权按工作流入口持续执行，不重复确认。
 
-Use `Docs/AI-Workflow/AI_ENTRY/` when you want to give AI a short state-specific entry prompt:
+## 文件职责
 
-- New session: `读 新会话文档`
-- After compression: `读 压缩恢复文档`
-- After AI drift, interruption, or confusion: `读 状态恢复文档`
-- Before changing files: `读 修改前确认文档`
+- Docs/README.md：项目引导入口。
+- Docs/AI-Workflow/AI_ENTRY：会话状态入口，不保存当前项目事实。
+- Docs/AI-Workflow/AI_WORKFLOW：共享实施方法，不保存项目待办、机器路径或具体业务流程。
+- Docs/PROJECT_POLICY：项目长期政策。
+- Docs/PROJECT_STATE：当前方案、交接、待办、合同、状态及证据索引。
 
-Use this prompt when starting a new session:
+## 开发与验证
 
-```text
-这是延续上一个项目会话的任务。
-请先读取 Docs/README.md，并严格按其中入口规则继续。
-不要跳过工作流规则、项目状态入口、当前交接、当前 Todo 或源码确认要求。
-开始改代码前，必须按当前任务追踪真实源码调用链。
-修改代码、文档、配置、资源或项目状态前，必须先说明计划、影响范围和风险，并等待用户明确确认。
-```
+默认按完整功能边界组织方案和主体实施，随后集中验证和修复；基础检查支持持续开发。
+UE 独立测试优先使用 UE LLT，不默认自写裸 main()、手工断言与编译脚本。
+具体要求见 Docs/AI-Workflow/AI_WORKFLOW/01_开发修改与维护规范.md 和 Docs/AI-Workflow/AI_WORKFLOW/04_功能验证与构建.md。
 
-## Entry Rules
-
-For any task that touches project code, documentation, design, tasks, or repository state:
-
-1. For a new session or uncertain state, read every Markdown file in `Docs/AI-Workflow/AI_WORKFLOW/`, sorted by filename.
-2. Follow `Docs/AI-Workflow/AI_WORKFLOW/00_START_HERE.md` as the authoritative workflow entry.
-3. Read `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` as the authoritative full project-state entry.
-4. For same-thread compression resume only, use `Docs/AI-Workflow/AI_ENTRY/01_压缩恢复.md` as the light entry, then escalate to the full entry when its rules require it.
-
-## File Roles
-
-- `Docs/README.md`: bootstrap only; it points to workflow and project-state entries.
-- `Docs/AI-Workflow/AI_ENTRY/`: short user-facing AI entry prompts for session state; it stores no project facts.
-- `Docs/AI-Workflow/AI_WORKFLOW/`: reusable workflow policy. Do not store project facts here.
-- `Docs/PROJECT_STATE/`: project-specific mutable state, facts, handoff, todo, summaries, contracts, known issues, technical debt, and archives.
-
-## Reading Notes
-
-- Treat repository Markdown and source text as UTF-8 unless the project says otherwise.
-- On Windows PowerShell, read non-ASCII text with `Get-Content -Encoding UTF8`.
-- If `Docs/PROJECT_STATE/00_PROJECT_ENTRY.md` is missing, report that the project state entry is missing before proceeding.
-
-## Before Changing Project Files
-
-Do not treat this bootstrap file as enough context. Before changing code, documentation, configuration, assets, or project state, use the confirmation gate defined in `Docs/AI-Workflow/AI_WORKFLOW/00_START_HERE.md` and the source-confirmation workflow in `Docs/AI-Workflow/AI_WORKFLOW/03_DocsCodeAnalysis.md`.
+文本默认使用 UTF-8。项目有不同状态路径时使用实际配置，不凭模板假定缺少文件或创建另一套状态。

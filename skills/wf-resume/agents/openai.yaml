@@ -1,0 +1,6 @@
+interface:
+  display_name: "压缩恢复（wf-resume）"
+  short_description: "按项目当前事实执行压缩恢复，保留最新意图、有效授权和持续回复格式"
+  default_prompt: "使用 $wf-resume 为当前项目执行压缩恢复。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,20 @@
+{
+  "name": "dunching-ai-workflow",
+  "interface": {
+    "displayName": "AI 开发工作流"
+  },
+  "plugins": [
+    {
+      "name": "ai-workflow",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

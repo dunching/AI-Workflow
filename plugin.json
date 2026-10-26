@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ai-workflow",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "按完整功能边界组织方案、主体实施、集中验证、维护与交接的中文 AI 开发工作流。",
   "author": {
     "name": "dunching"

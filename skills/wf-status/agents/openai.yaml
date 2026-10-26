@@ -1,0 +1,6 @@
+interface:
+  display_name: "状态恢复（wf-status）"
+  short_description: "按项目当前事实执行状态恢复，保留最新意图、有效授权和持续回复格式"
+  default_prompt: "使用 $wf-status 为当前项目执行状态恢复。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "提交推送（wf-commit-push）"
+  short_description: "核对暂存范围和待推提交，按授权提交或推送当前分支"
+  default_prompt: "使用 $wf-commit-push 提交本轮改动并推送当前分支。"
+policy:
+  allow_implicit_invocation: true

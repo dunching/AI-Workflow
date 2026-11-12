@@ -1,0 +1,6 @@
+interface:
+  display_name: "收敛清理与整理重构（wf-cleanup）"
+  short_description: "核对现有引用和行为合同，清退冗余并集中验证"
+  default_prompt: "使用 $wf-cleanup 收敛本轮改动，清理已证实的冗余并验证受影响路径。"
+policy:
+  allow_implicit_invocation: true

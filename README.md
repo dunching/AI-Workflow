@@ -11,6 +11,7 @@ UE 独立测试优先 LLT，不默认建立裸 main()、手工断言和编译脚
 - plugin.json：插件 ai-workflow。
 - skills/project-ai-workflow/SKILL.md：保留兼容的开发工作流入口。
 - skills/wf-start、wf-resume、wf-status、wf-check：四个轻量会话入口，规则仍引用 AI_ENTRY 与 AI_WORKFLOW。
+- skills/wf-commit-push、wf-cleanup：提交推送和收敛清理入口，规则位于 AI_WORKFLOW。
 - AI_WORKFLOW 与 AI_ENTRY：随包规则和会话入口，只有一份正文。
 - profiles/unreal：随包 UE 编码规范与原始 .clang-format；按 [UE 规则路由](profiles/unreal/README.md)加载，项目明确覆盖优先。
 
@@ -40,6 +41,10 @@ codex plugin marketplace add https://github.com/dunching/AI-Workflow.git --ref m
 | $wf-resume | 实际压缩后恢复/明确要求压缩恢复 | $project-ai-workflow 执行压缩恢复 |
 | $wf-status | 状态恢复/重新对齐项目事实 | $project-ai-workflow 执行状态恢复 |
 | $wf-check | 修改前核对事实、范围和授权 | $project-ai-workflow 执行修改前确认 |
+| $wf-commit-push | 只提交、只推送或提交后推送 | $project-ai-workflow 执行提交推送 |
+| $wf-cleanup | 核对范围并执行收敛清理、整理重构或交接收口 | $project-ai-workflow 执行收敛清理 |
+
+例如“使用 $wf-commit-push，只提交本轮改动”或“使用 $wf-cleanup，整理本轮涉及的模块并验证原有行为”。同一次任务需要两项操作时，可明确要求先收敛验证，再提交并推送。
 
 自然语言仅在真实意图匹配时用于隐式选择，引用、讨论或修改这些短语不触发执行；不保证宿主每次自动命中，也不注册自定义斜杠命令或 GUI 新会话事件。
 新会话完整读取插件 AI_WORKFLOW 当前规则后读项目当前政策与状态；压缩恢复按摘要、最新意图、强制约束和相关变化轻量核对，不重读全部历史。
